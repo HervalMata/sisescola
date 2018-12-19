@@ -6,7 +6,7 @@
             <h3>Novo Usuário</h3>
             {!! form($form->add('insert', 'submit', [
                 'attr' => ['class' => 'btn btn-success btn-block'],
-                'label' => 'Cadastrar'
+                'label' => Icon::create('floppy-disk'). ' Cadastrar'
             ])) !!}
         </div>
     </div>
