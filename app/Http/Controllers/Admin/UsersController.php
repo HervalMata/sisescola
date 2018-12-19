@@ -80,7 +80,12 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $form = \FormBuilder::create(UserForm::class, [
+            'url' => route('admin.users.update', ['user' => $user->id]),
+            'method' => 'PUT',
+            'model' => $user
+        ]);
+        return view('admin.users.edit', compact('form'));
     }
 
     /**
@@ -92,7 +97,22 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        /** @var Form $form */
+        $form = \FormBuilder::create(UserForm::class, [
+            'data' => ['id' => $user->id]
+        ]);
+
+        if (!$form->isValid()) {
+            return redirect()
+                ->back()
+                ->withErrors($form->getErrors())
+                ->withInput();
+        }
+
+        $data = $form->getFieldValues();
+        $user->update($data);
+
+        return redirect()->route('admin.users.index');
     }
 
     /**
