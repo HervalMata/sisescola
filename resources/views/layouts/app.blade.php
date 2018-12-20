@@ -50,8 +50,7 @@
         @endphp
 
         {!! $navbar !!}
-
-        {!! form($formLogout) !!}
+        {{--{!! form($formLogout) !!}--}}
         @if(Session::has('message'))
             <div class="container">
                 {!! Alert::success(Session::get('message'))->close() !!}
