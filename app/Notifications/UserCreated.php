@@ -9,7 +9,12 @@ use Illuminate\Notifications\Messages\MailMessage;
 
 class UserCreated extends Notification
 {
-    use Queueable;
+    private $token;
+
+    public function __construct($token)
+    {
+        $this->token = $token;
+    }
 
     /**
      * Get the notification's delivery channels.
@@ -35,6 +40,7 @@ class UserCreated extends Notification
             ->subject("Sua conta no $appName foi criada")
             ->greeting("Olá {$notifiable->name}, seja bem-vindo ao $appName")
             ->line("Seu número de matricula é {$notifiable->enrolment}")
+            ->action('Clique aqui para redefinir sua senha', route('password.reset', $this->token))
             ->line("Obrigado por usar nossa aplicação!")
             ->salutation('');
     }
