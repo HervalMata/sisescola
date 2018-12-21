@@ -94,4 +94,9 @@ class User extends Authenticatable implements TableInterface
     {
         return $this->morphTo();
     }
+
+    public function profile()
+    {
+        return $this->hasOne(UserProfile::class)->withDefault();
+    }
 }
