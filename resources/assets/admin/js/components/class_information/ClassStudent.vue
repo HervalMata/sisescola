@@ -16,6 +16,11 @@
                 <tr v-for="student in students">
                     <td>Excluir</td>
                     <td>{{student.user.name}}</td>
+                    <td>
+                        <button type="button" class="btn btn-success" @click="destroy(student)">
+                            <span class="glyphicon glyphicon-trash"></span> Excluir
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -71,6 +76,16 @@
                     });
                 })
             })
+        },
+        methods: {
+            destroy(student) {
+                if (confirm('Deseja remover este aluno')) {
+                    store.dispatch('classStudent/destroy', {
+                        studentId: student.id,
+                        classInformationId: this.classInformation
+                    })
+                }
+            }
         }
     }
 </script>

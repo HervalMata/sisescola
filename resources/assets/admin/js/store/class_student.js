@@ -12,6 +12,14 @@ const mutations = {
     },
     set(state, students) {
         state.students = students;
+    },
+    destroy(state, studentId) {
+        let index = state.students.findIndex((item) => {
+            return item.id == studentId;
+        });
+        if (index!=-1) {
+            state.students.splice(index, 1);
+        }
     }
 }
 
@@ -27,6 +35,12 @@ const actions = {
             .then(response => {
                 context.commit('set', response.data);
             })
+    },
+    destroy(context, {studentId, classInformationId}) {
+        return ClassStudent.deletr({class_information: classInformationId, student: studentId})
+            .then(response => {
+                context.commit('destroy', studentId)
+            });
     }
 }
 
