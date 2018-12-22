@@ -14,13 +14,12 @@
             </thead>
             <tbody>
                 <tr v-for="student in students">
-                    <td>Excluir</td>
-                    <td>{{student.user.name}}</td>
                     <td>
                         <button type="button" class="btn btn-success" @click="destroy(student)">
                             <span class="glyphicon glyphicon-trash"></span> Excluir
                         </button>
                     </td>
+                    <td>{{student.user.name}}</td>
                 </tr>
             </tbody>
         </table>
@@ -74,7 +73,7 @@
                         styling: 'brighttheme',
                         type: 'success'
                     });
-                })
+                });
             })
         },
         methods: {

@@ -37,7 +37,7 @@ const actions = {
             })
     },
     destroy(context, {studentId, classInformationId}) {
-        return ClassStudent.deletr({class_information: classInformationId, student: studentId})
+        return ClassStudent.delete({class_information: classInformationId, student: studentId})
             .then(response => {
                 context.commit('destroy', studentId)
             });

@@ -55,6 +55,8 @@ Route::group([
     'prefix' => 'api'
 ], function () {
     Route::name('students.index')->get('students', 'StudentsController@index');
+    Route::name('subjects.index')->get('subjects', 'SubjectsController@index');
+    Route::name('teachers.index')->get('teachers', 'TeachersController@index');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
