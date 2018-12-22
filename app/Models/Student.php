@@ -19,8 +19,8 @@ class Student extends Model
         return $data;
     }
 
-    public function classInformations()
+    /*public function classInformations()
     {
         return $this->belongsToMany(ClassInformation::class);
-    }
+    }*/
 }

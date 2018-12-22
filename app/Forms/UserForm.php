@@ -22,7 +22,7 @@ class UserForm extends Form
             ->add('type', 'select', [
                 'label' => 'Tipo de usuário',
                 'choices' => $this->roles(),
-                'rules' => "required|in:" , implode(',', array_keys($this->roles()))
+                'rules' => "required|in:" . implode(',', array_keys($this->roles()))
             ])
             ->add('send_mail', 'checkbox', [
                 'label' => 'Enviar e-mail de boas vindas',

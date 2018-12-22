@@ -24,7 +24,7 @@ class UsersTableSeeder extends Seeder
         });
 
         factory(User::class, 100)->create()->each(function (User $user) {
-            if (!$user->userable()) {
+            if (!$user->userable) {
                 $profile = factory(\SON\Models\UserProfile::class)->make();
                 $user->profile()->create($profile->toArray());
                 User::assignRole($user, User::ROLE_TEACHER);
@@ -35,7 +35,7 @@ class UsersTableSeeder extends Seeder
         });
 
         factory(User::class, 100)->create()->each(function (User $user) {
-            if (!$user->userable()) {
+            if (!$user->userable) {
                 $profile = factory(\SON\Models\UserProfile::class)->make();
                 $user->profile()->create($profile->toArray());
                 User::assignRole($user, User::ROLE_STUDENT);
