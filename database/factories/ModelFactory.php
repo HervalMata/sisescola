@@ -29,7 +29,7 @@ $factory->define(\SON\Models\UserProfile::class, function (Faker\Generator $fake
         'address' => $faker->address,
         'cep' => function() use($faker) {
             $cep = preg_replace('/[^0-9]/', '', $faker->postcode());
-            return $cep;
+            return substr($cep, 0, 7);
         },
         'number' => rand(1,100),
         'complement' => rand(1,10)%2==0?null:$faker->sentence,

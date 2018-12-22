@@ -63,7 +63,12 @@
                     studentId: event.params.data.id,
                     classInformationId: self.classInformation
                 }).then(() => {
-                    alert('Aluno adicionado com sucesso')
+                    new PNotify({
+                        title: 'Aviso',
+                        text: 'Aluno adicionado com sucesso',
+                        styling: 'brighttheme',
+                        type: 'success'
+                    });
                 })
             })
         }
