@@ -52,9 +52,9 @@ class ClassInformation extends Model implements TableInterface
             case 'ID' :
                 return $this->id;
             case 'Data Inicio' :
-                return $this->date_start->format('d/m/y');//Carbon
+                return $this->date_start->format('d/m/Y');//Carbon
             case 'Data Fim' :
-                return $this->date_end>format('d/m/y');
+                return $this->date_end->format('d/m/Y');
             case 'Ciclo' :
                 return $this->cycle;
             case 'Subdivisão' :
@@ -64,5 +64,10 @@ class ClassInformation extends Model implements TableInterface
             case 'Ano' :
                 return $this->year;
         }
+    }
+
+    public function students()
+    {
+        return $this->belongsToMany(Student::class);
     }
 }

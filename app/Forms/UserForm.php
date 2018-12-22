@@ -13,11 +13,11 @@ class UserForm extends Form
         $this
             ->add('name', 'text', [
                 'label' => 'Nome',
-                'ruled' => 'required|max:30'
+                'rules' => 'required|max:30'
             ])
             ->add('email', 'email', [
                 'label' => 'Email',
-                'ruled' => 'required|max:255|unique:users,email,{$id}'
+                'rules' => 'required|max:255|unique:users,email,{$id}'
             ])
             ->add('type', 'select', [
                 'label' => 'Tipo de usuário',

@@ -3,6 +3,7 @@
 namespace SON\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use SON\Forms\ClassInformationForm;
 use SON\Http\Controllers\Controller;
 use SON\Models\ClassInformation;
 
@@ -26,7 +27,7 @@ class ClassInformationsController extends Controller
      */
     public function create()
     {
-        $form = \FormBuilder::create(ClassInformation::class, [
+        $form = \FormBuilder::create(ClassInformationForm::class, [
             'url' => route('admin.class_informations.store'),
             'method' => 'POST'
         ]);
@@ -42,7 +43,7 @@ class ClassInformationsController extends Controller
     public function store(Request $request)
     {
         /** @var \Form $form */
-        $form = \FormBuilder::create(ClassInformation::class);
+        $form = \FormBuilder::create(ClassInformationForm::class);
 
         if (!$form->isValid()) {
             return redirect()
@@ -63,9 +64,9 @@ class ClassInformationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(ClassInformation $class_informations)
+    public function show(ClassInformation $class_information)
     {
-        return view('admin.class_informations.show', compact('class_informations'));
+        return view('admin.class_informations.show', compact('class_information'));
     }
 
     /**
@@ -74,12 +75,12 @@ class ClassInformationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ClassInformation $class_informations)
+    public function edit(ClassInformation $class_information)
     {
-        $form = \FormBuilder::create(SubjectForm::class, [
-            'url' => route('admin.class_informations.update', ['class_informations' => $class_informations->id]),
+        $form = \FormBuilder::create(ClassInformationForm::class, [
+            'url' => route('admin.class_informations.update', ['class_informations' => $class_information->id]),
             'method' => 'PUT',
-            'model' => $class_informations
+            'model' => $class_information
         ]);
 
         return view('admin.class_informations.edit', compact('form'));
@@ -92,10 +93,10 @@ class ClassInformationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ClassInformation $class_informations)
+    public function update(ClassInformation $class_information)
     {
         /** @var \Form $form */
-        $form = \FormBuilder::create(ClassInformation::class);
+        $form = \FormBuilder::create(ClassInformationForm::class);
 
         if (!$form->isValid()) {
             return redirect()
@@ -105,7 +106,7 @@ class ClassInformationsController extends Controller
         }
 
         $data = $form->getFieldValues();
-        $class_informations->update($data);
+        $class_information->update($data);
         session()->flash('message', 'Turma editada com sucesso.');
         return redirect()->route('admin.class_informations.index');
     }
@@ -116,9 +117,9 @@ class ClassInformationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ClassInformation $class_informations)
+    public function destroy(ClassInformation $class_information)
     {
-        $class_informations->delete();
+        $class_information->delete();
         session()->flash('message', 'Turma excluida com sucesso.');
         return redirect()->route('admin.class_informations.index');
     }

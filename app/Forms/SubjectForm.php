@@ -11,7 +11,7 @@ class SubjectForm extends Form
         $this
             ->add('name', 'text', [
                 'label' => 'Nome',
-                'ruled' => 'required|max:255'
+                'rules' => 'required|max:255'
             ]);
     }
 }

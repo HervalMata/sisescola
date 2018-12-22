@@ -35,7 +35,7 @@
                 </tr>
                 <tr>
                     <th scope="row">Nome</th>
-                    <td>{{$user->name}}</td>
+                    <td>{{$subject->name}}</td>
                 </tr>
                 </tbody>
             </table>

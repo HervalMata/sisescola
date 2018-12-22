@@ -5,8 +5,8 @@
         <div class="row">
             <h3>Ver Turma</h3>
             @php
-                $linkEdit = route('admin.class_informations.edit', ['class_information' => $class_information->id]);
-                $linkDelete = route('admin.class_informations.destroy', ['class_information' => $class_information->id]);
+                $linkEdit = route('admin.class_informations.edit', ['class_informations' => $class_information->id]);
+                $linkDelete = route('admin.class_informations.destroy', ['class_informations' => $class_information->id]);
             @endphp
             {!! Button::warning('Editar')->asLinkTo($linkEdit) !!}
             {!! Button::danger(Icon::remove().' Excluir')->asLinkTo($linkDelete)
