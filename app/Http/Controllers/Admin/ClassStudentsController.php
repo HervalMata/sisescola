@@ -31,9 +31,8 @@ class ClassStudentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ClassStudentRequest $request, ClassInformation $class_information)
+    public function store(ClassStudentRequest $request, ClassInformation $class_information, Student $student)
     {
-        $student = Student::find($request->get('student_id'));
         $class_information->students()->save($student);
         return $student;
     }

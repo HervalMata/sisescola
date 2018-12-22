@@ -1,4 +1,4 @@
-import 'vue-resource';
+import {ClassStudent} from "../services/resources";
 import Vue from 'vue';
 import ADMIN_CONFIG from '../services/adminConfig';
 
@@ -7,12 +7,21 @@ const state = {
 }
 
 const mutations = {
+    add(state, student) {
+        state.students.push(student);
+    },
     set(state, students) {
         state.students = students;
     }
 }
 
 const actions = {
+    store(context, {studentId, classInformationId}) {
+        return ClassStudent.save({class_information: classInformationId}, {student_id: studentId})
+            .then(response => {
+                context.commit('add', response.data);
+            })
+    },
     query(context, classInformationId) {
         return Vue.http.get(`${ADMIN_CONFIG.ADMIN_URL}/class_informations/${classInformationId}/students`)
             .then(response => {
