@@ -14,9 +14,14 @@ class ClassStudentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, ClassInformation $classInformation)
+    public function index(Request $request, ClassInformation $class_information)
     {
-        return view('admin.class_informations.class_student', compact('classInformation'));
+        if (!$request->ajax()) {
+            return view('admin.class_informations.class_student', compact('class_information'));
+        } else {
+            return $class_information->students()->get();
+        }
+
     }
 
     /**
