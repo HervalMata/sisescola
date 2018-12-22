@@ -70,4 +70,9 @@ class ClassInformation extends Model implements TableInterface
     {
         return $this->belongsToMany(Student::class);
     }
+
+    public function teachings()
+    {
+        return $this->hasMany(ClassTeaching::class);
+    }
 }
