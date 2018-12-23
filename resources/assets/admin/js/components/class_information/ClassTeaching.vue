@@ -94,6 +94,22 @@
                     minimumInputLength: 1,
                 });
             }
+        },
+        methods: {
+            store() {
+                store.dispatch('classTeaching/store', {
+                    teacherId: $("select[name=teachers]").val(),
+                    subjectId: $("select[name=subjects]").val(),
+                    classInformationId: this.classInformation
+                }).then(response => {
+                    new PNotify({
+                        title: 'Aviso',
+                        text: 'Ensino adicionado com sucesso',
+                        styling: 'brighttheme',
+                        type: 'succeess'
+                    });
+                })
+            }
         }
     }
 </script>

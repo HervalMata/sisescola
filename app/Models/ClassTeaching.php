@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClassTeaching extends Model
 {
-    protected $timestamps = false;
+    public $timestamps = false;
 
     protected $fillable = [
         'subject_id',
@@ -27,5 +27,14 @@ class ClassTeaching extends Model
     public function teacher()
     {
         return $this->belongsTo(Teacher::class);
+    }
+
+    public function toArray()
+    {
+        $data = parent::toArray();
+        $data['teacher'] = $this->teacher;
+        $data['subject'] = $this->subject;
+        $data['class_information'] = $this->classInformation();
+        return $data;
     }
 }
