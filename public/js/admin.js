@@ -33984,7 +33984,7 @@ exports = module.exports = __webpack_require__(20)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -34130,6 +34130,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     type: 'succeess'
                 });
             });
+        },
+        destroy: function destroy(teaching) {
+            if (confirm('Deseja remover este ensino')) {
+                __WEBPACK_IMPORTED_MODULE_1__store_store__["a" /* default */].dispatch('classTeaching/destroy', {
+                    teachingId: teaching.id,
+                    classInformationId: this.classInformation
+                });
+            }
         }
     }
 });
@@ -34274,6 +34282,9 @@ var state = {
 var mutations = {
     set: function set(state, teachings) {
         state.teachings = teachings;
+    },
+    add: function add(state, teaching) {
+        state.teachings.push(teaching);
     }
 };
 
@@ -34291,6 +34302,14 @@ var actions = {
         return __WEBPACK_IMPORTED_MODULE_0__services_resources__["b" /* ClassTeaching */].save({ class_information: classInformationId }, { teacher_id: teacherId, subject_id: subjectId }).then(function (response) {
             context.commit('add', response.data);
         });
+    },
+    destroy: function destroy(state, teachingId) {
+        var index = state.teachings.findIndex(function (item) {
+            return item.id == teachingId;
+        });
+        if (index != -1) {
+            state.teachings.splice(index, 1);
+        }
     }
 };
 

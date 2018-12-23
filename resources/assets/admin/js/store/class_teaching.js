@@ -10,9 +10,9 @@ const mutations = {
     set(state, teachings) {
         state.teachings = teachings;
     },
-    /*add(state, teaching) {
+    add(state, teaching) {
         state.teachings.push(teaching);
-    }*/
+    }
 }
 
 const actions = {
@@ -27,6 +27,14 @@ const actions = {
             .then(response => {
                 context.commit('add', response.data);
             })
+    },
+    destroy(state, teachingId) {
+        let index = state.teachings.findIndex((item) => {
+            return item.id == teachingId;
+        });
+        if (index != -1) {
+            state.teachings.splice(index, 1);
+        }
     }
 }
 

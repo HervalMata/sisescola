@@ -109,6 +109,14 @@
                         type: 'succeess'
                     });
                 })
+            },
+            destroy(teaching) {
+                if (confirm('Deseja remover este ensino')) {
+                    store.dispatch('classTeaching/destroy', {
+                        teachingId: teaching.id,
+                        classInformationId: this.classInformation
+                    })
+                }
             }
         }
     }
