@@ -34127,7 +34127,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     title: 'Aviso',
                     text: 'Ensino adicionado com sucesso',
                     styling: 'brighttheme',
-                    type: 'succeess'
+                    type: 'success'
                 });
             });
         },

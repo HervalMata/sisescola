@@ -106,7 +106,7 @@
                         title: 'Aviso',
                         text: 'Ensino adicionado com sucesso',
                         styling: 'brighttheme',
-                        type: 'succeess'
+                        type: 'success'
                     });
                 })
             },

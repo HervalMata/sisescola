@@ -8,7 +8,8 @@
         "php": ">=5.6.4",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "patricktalmadge/bootstrapper": "5.10.2"
+        "patricktalmadge/bootstrapper": "5.10.2",
+        "tymon/jwt-auth": "dev-develop#23034342c5eeacdcc0949a80ae4f2eada653f0ca"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
