@@ -99,4 +99,26 @@ class User extends Authenticatable implements TableInterface
     {
         return $this->hasOne(UserProfile::class)->withDefault();
     }
+
+    /**
+     * @return mixed
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [
+            'user' => [
+                'id' => $this->id,
+                'name' => $this->name,
+                'email' => $this->email,
+            ]
+        ];
+    }
 }

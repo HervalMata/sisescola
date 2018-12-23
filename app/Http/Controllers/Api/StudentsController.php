@@ -9,11 +9,13 @@ use SON\Models\Teacher;
 
 class StudentsController extends Controller
 {
-    public function index(Request $request)
+        public function index(Request $request)
     {
-        $search = $request->input('q');
-        return !$search ? [] : Student::whereHas('user', function ($query) use ($search) {
-            $query->where('users.name', 'LIKE', "%{$search}%");
+        $search = $request->get('q');
+        return !$search ?
+            [] :
+            Student::whereHas('user', function ($query) use ($search) {
+                $query->where('users.name', 'LIKE', "%{$search}%");
             })->take(10)->get();
     }
 }
