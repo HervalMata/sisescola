@@ -1,10 +1,17 @@
 <template>
-    <router-view></router-view>
+    <div>
+        <teacher-menu></teacher-menu>
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>
-    export default {
+    import TeacherMenuComponent from './teacher/TeacherMenu';
 
+    export default {
+        components: {
+            'teacher-menu' : TeacherMenuComponent
+        }
     }
 </script>
 
