@@ -37,7 +37,9 @@
     </div>
 </template>
 
-<script>
+<script type="text/javascript">
+    import store from '../store/store';
+
     export default {
         data() {
             return {
@@ -49,7 +51,10 @@
         },
         methods: {
             login() {
-
+                store.dispatch('auth/login', this.user)
+                    .then(() => {
+                        this.$router.push({name: 'class_informations_list'})
+                    })
             }
         }
     }

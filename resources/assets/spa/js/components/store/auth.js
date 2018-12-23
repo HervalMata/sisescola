@@ -1,3 +1,5 @@
+import {Jwt} from "../services/resources";
+
 const state = {
     user: null,
     check: null
@@ -13,11 +15,11 @@ const mutations = {
 };
 
 const actions = {
-    login() {
-
+    login(username, password) {
+        return Jwt.accessToken(username, password);
     },
     logout() {
-
+        return Jwt.logout();
     }
 };
 
