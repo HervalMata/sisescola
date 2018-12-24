@@ -2,7 +2,9 @@
     
 </template>
 
-<script>
+<script type="text/javascript">
+    import store from '../store/store';
+
     export default {
         data() {
             return {
@@ -12,6 +14,17 @@
                 brandRouteName: 'class_informations_list'
             }
         },
+        computed: {
+            isAuth() {
+                return store.state.auth.check;
+            },
+            user() {
+                return store.state.auth.user;
+            },
+            username() {
+                return this.isAuth ? store.state.auth.user.name : null;
+            }
+        }
     };
 </script>
 

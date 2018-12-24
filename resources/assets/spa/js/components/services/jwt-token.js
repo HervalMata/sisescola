@@ -1,6 +1,11 @@
 import {Jwt, jwt} from './resources';
 import LocalStorage from './localstorage';
 
+const payloadToObject = (token) => {
+    let payload = token.split('.')[1];
+    return JSON.parse(atob(payload));
+}
+
 export default {
     get token() {
         return LocalStorage.get();
