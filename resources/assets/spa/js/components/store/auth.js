@@ -1,4 +1,4 @@
-import JwtToken from "../services/jwt-token";
+import JwtToken from "../../services/jwt-token";
 
 const state = {
     user: JwtToken.payload != null ? JwtToken.payload.user : null,
@@ -11,7 +11,8 @@ const mutations = {
         state.user = JwtToken.payload.user;
     },
     unauthenticated(state) {
-
+        state.check = false;
+        state.user = null;
     }
 };
 
@@ -22,8 +23,13 @@ const actions = {
                 context.commit('authenticated');
             });
     },
-    logout() {
-        return JwtToken.logout();
+    logout(context) {
+        let afterLogout = () => {
+            context.commit('unauthenticated');
+        }
+        return JwtToken.revokeToken()
+            .then(afterLogout)
+            .catch(afterLogout);
     }
 };
 
